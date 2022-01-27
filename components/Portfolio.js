@@ -7,55 +7,72 @@ import BalanceChart from './BalanceChart';
 
 
 const Portfolio = ({walletAddress, sanityTokens, thirdWebTokens}) => {
-    console.log(walletAddress)
-    console.log(sanityTokens)
-    console.log(thirdWebTokens)
-  return (
-  <Wrapper>
-    <Content>
-        <Chart>
-            <div>
-                <Balance>
-                    <BalanceTitle>Portfolio balance</BalanceTitle>
-                    <BalanceValue>
-                        {'$'}
-                        {/* {walletBalance.toLocaleString()} */}
-                        {'400'}
-                    </BalanceValue>
-                </Balance>
-            </div>
-            <BalanceChart />
-        </Chart>
-        <PortfolioTable>
-            <TableItem>
-                <Title>Your Assets</Title>
-            </TableItem>
-            <Divider />
-            <Table>
-                <TableItem>
-                    <TableRow>
-                        <div style={{flex: 3}}>Name</div>
-                        <div style={{flex: 2}}>Balance</div>
-                        <div style={{flex: 1}}>Price</div>
-                        <div style={{flex: 1}}>Allocation</div>
-                        <div  style={{flex:0}}>
-                            <BsThreeDotsVertical />
-                        </div>
-                    </TableRow>
-                </TableItem>
-                <Divider />
-                <div>{ coins.map(coin => (
+    const [walletBalance, setWalletBalance] = useState(0);
+    const tokenToUSD = {}
+
+    for(const token of sanityTokens) {
+        tokenToUSD[token.contractAddress] = Number(token.usdPrice)
+    }
+    useEffect(() => {
+        const updateTotalBalance = async () => {
+            const total = await Promise.all(
+                thirdWebTokens.map(async token => {
+                    const balance = await token.balanceOf(walletAddress)
+                    return Number(balance.displayValue) * tokenToUSD[token.address]
+                })
+            )
+            setWalletBalance(total.reduce((acc, curr) => acc + curr, 0))
+        }
+
+        return updateTotalBalance()
+    }, [thirdWebTokens, walletAddress])
+
+    
+    return (
+        <Wrapper>
+            <Content>
+                <Chart>
                     <div>
-                        {coin.name}
-                        <Coin coin={coin} />
-                        <Divider />
+                        <Balance>
+                            <BalanceTitle>Portfolio balance</BalanceTitle>
+                            <BalanceValue>
+                                {'$'}
+                                {walletBalance.toLocaleString()}
+                            </BalanceValue>
+                        </Balance>
                     </div>
-                )) }</div>
-            </Table>
-        </PortfolioTable>
-    </Content>
-  </Wrapper>
-  )
+                    <BalanceChart />
+                </Chart>
+                <PortfolioTable>
+                    <TableItem>
+                        <Title>Your Assets</Title>
+                    </TableItem>
+                    <Divider />
+                    <Table>
+                        <TableItem>
+                            <TableRow>
+                                <div style={{flex: 3}}>Name</div>
+                                <div style={{flex: 2}}>Balance</div>
+                                <div style={{flex: 1}}>Price</div>
+                                <div style={{flex: 1}}>Allocation</div>
+                                <div  style={{flex:0}}>
+                                    <BsThreeDotsVertical />
+                                </div>
+                            </TableRow>
+                        </TableItem>
+                        <Divider />
+                        <div>{ coins.map(coin => (
+                            <div>
+                                {coin.name}
+                                <Coin coin={coin} />
+                                <Divider />
+                            </div>
+                        )) }</div>
+                    </Table>
+                </PortfolioTable>
+            </Content>
+        </Wrapper>
+    )
 };
 
 export default Portfolio;

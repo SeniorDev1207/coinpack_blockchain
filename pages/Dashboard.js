@@ -21,14 +21,21 @@ const Dashboard = ({address}) => {
 
     useEffect (() => {
         const getSanityAndThirdWebTokens = async () => {
-            const coins = await fetch(
-                "https://ax782o4o.api.sanity.io/v1/data/query/production?query=*%5B_type%3D%3D'coins'%5D%7B%0A%20%20name%2C%0A%20%20usdPrice%2C%0A%20%20contractAddress%2C%0A%20%20symbol%2C%0A%20%20logo%0A%7D"
-                )
-            const sanityTokens = (await coins.json()).result
-            setSanityTokens(sanityTokens)
-            setThirdWebTokens(
-                sanityTokens.map(token => sdk.getTokenModule(token.contractAddress))
-            )
+            try {
+                const coins = await fetch(
+                    "https://ax782o4o.api.sanity.io/v1/data/query/production?query=*%5B_type%3D%3D'coins'%5D%7B%0A%20%20name%2C%0A%20%20usdPrice%2C%0A%20%20contractAddress%2C%0A%20%20symbol%2C%0A%20%20logo%0A%7D"
+                    )
+                    const sanityTokens = (await coins.json()).result
+                    setSanityTokens(sanityTokens)
+                    setThirdWebTokens(
+                        sanityTokens.map(token => {
+                            return sdk.getTokenModule(token.contractAddress)
+                        })
+                    )
+            }catch(error){
+                console.error(error)
+            }
+            
         
         }
         return getSanityAndThirdWebTokens()
