@@ -7,8 +7,8 @@ const Coin = ({coin}) => {
   return (
     <Wrapper>
       <div>
-        <div>
-          <NameCol style={{flex: 3}}>
+        <div style={{flex: 3}}>
+          <NameCol>
             <CoinIcon>
               <Image src={coin.logo} alt={coin.name} />
             </CoinIcon>
