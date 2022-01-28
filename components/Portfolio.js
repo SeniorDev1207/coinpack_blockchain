@@ -25,7 +25,7 @@ const Portfolio = ({walletAddress, sanityTokens, thirdWebTokens}) => {
         }
 
         return updateTotalBalance()
-    }, [thirdWebTokens, sanityTokens, walletAddress])
+    }, [thirdWebTokens, sanityTokens, walletAddress, tokenToUSD])
 
     
     return (
@@ -61,8 +61,8 @@ const Portfolio = ({walletAddress, sanityTokens, thirdWebTokens}) => {
                             </TableRow>
                         </TableItem>
                         <Divider />
-                        <div>{ coins.map(coin => (
-                            <div>
+                        <div>{ coins.map((coin, key) => (
+                            <div key={key}>
                                 {coin.name}
                                 <Coin coin={coin} />
                                 <Divider />

@@ -13,7 +13,7 @@ const Promos = () => {
               </Description>
               <Placeholder />
               <Additional>
-                  That's about <span>a lot of crypto</span>...
+                  That is about <span>a lot of crypto</span>...
               </Additional>
           </OfferCard>
           <OfferCard>
