@@ -1,17 +1,32 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 
 const TransferModal = () => {
-  return (<Wrapper>
-    <Selector>
-        <Option>
-            <p>Send</p>
-        </Option>
-        <Option>
-            <p>Receive</p>
-        </Option>    
-    </Selector>
-  </Wrapper>);
+    const [action, setAction] = React.useState('send');
+
+    const selectedStyle = {
+        color: '#3773f5',
+    }
+    const unselectedStyle = {
+        border: '1px solid #282b2f',
+    }
+
+    return (<Wrapper>
+        <Selector>
+            <Option
+                style={action === 'send' ? selectedStyle : unselectedStyle}
+                onClick={()=> setAction('send')}
+            >
+                <p>Send</p>
+            </Option>
+            <Option
+                style={action === 'receive' ? selectedStyle : unselectedStyle}
+                onClick={()=> setAction('receive')}
+            >
+                <p>Receive</p>
+            </Option>    
+        </Selector>
+    </Wrapper>);
 };
 
 export default TransferModal;
@@ -43,3 +58,4 @@ const Option = styled.div`
         background-color: #111214;
     }
 `
+
