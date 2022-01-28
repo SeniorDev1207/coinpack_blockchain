@@ -24,38 +24,38 @@ export default function Home() {
 }
 
 const Wrapper = styled.div`
-display: flex;
-height: 100vh;
-max-width: 100vw;
-background-color: #0a0b0c;
-color: white;
-display: grid;
-place-items: center;
+  display: flex;
+  height: 100vh;
+  max-width: 100vw;
+  background-color: #0a0b0c;
+  color: white;
+  display: grid;
+  place-items: center;
 `
 const WalletConnect = styled.div`
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `
 const Button = styled.button`
-border: 1px solid #282b2f;
-padding: 0.8rem;
-font-size: 1.3rem;
-font-weight: 500;
-border-radius: 0.5rem;
-background-color: #3773f5;
-color: black;
+  border: 1px solid #282b2f;
+  padding: 0.8rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  border-radius: 0.5rem;
+  background-color: #3773f5;
+  color: black;
 
-&:hover {
-  cursor: pointer;
-}
+  &:hover {
+    cursor: pointer;
+  }
 `
 
 const Details = styled.div`
-font-size: 1.2rem;
-text-align: center;
-margin-top: 1rem;
-font-weight: 500;
-color: #282b2f;
+  font-size: 1.2rem;
+  text-align: center;
+  margin-top: 1rem;
+  font-weight: 500;
+  color: #282b2f;
 `

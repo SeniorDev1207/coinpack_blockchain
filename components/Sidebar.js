@@ -34,7 +34,7 @@ const LogoContainer = styled.div`
 `
 
 const Logo = styled.div`
-    width: 44%;
+    width: 65%;
     object-fit: contain;
     margin-left: 1rem;
 `
