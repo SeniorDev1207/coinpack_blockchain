@@ -25,7 +25,7 @@ const Portfolio = ({walletAddress, sanityTokens, thirdWebTokens}) => {
         }
 
         return updateTotalBalance()
-    }, [thirdWebTokens, walletAddress])
+    }, [thirdWebTokens, sanityTokens, walletAddress])
 
     
     return (
