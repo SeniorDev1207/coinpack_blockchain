@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
-import CoinbaseLogo from '../assets/cb-logo.png';
 import styled from 'styled-components';
+import CoinBackpackLogo from '../assets/cb-logo.png';
 import Image from 'next/image';
 import {navItems} from '../static/navItems';
 
@@ -8,7 +8,7 @@ const Sidebar = () => {
     const [activeIcon, setActiveIcon] = useState(navItems[0].title);
     return <Wrapper>
         <LogoContainer>
-            <Logo><Image src={CoinbaseLogo} alt='coinbase logo '></Image></Logo>
+            <Logo><Image src={CoinBackpackLogo} alt='coinbase logo '></Image></Logo>
             <NavItemsContainer>
                 {navItems.map((item, index) => (
                     <NavItem key={index} onClick={()=> setActiveIcon(item.title)}>

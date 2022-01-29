@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 import { useWeb3 } from '@3rdweb/hooks'
 import Dashboard from './Dashboard'
+import CoinBackpackLogo from '../assets/cb-logo.png';
+import Image from 'next/image';
 
 
 export default function Home() {
@@ -10,7 +12,14 @@ export default function Home() {
       {address ? (
         <Dashboard address={address} />  
       ) : (
-      
+        <div>
+          <LogoContainer>
+            <Logo><Image src={CoinBackpackLogo} alt='coinbase logo '></Image></Logo>
+            <Headline>
+              <p>Start you crypto journey with hands on experience</p>
+            </Headline>
+          </LogoContainer>
+
         <WalletConnect>
           <Button onClick={() => connectWallet('injected')}>Connect wallet</Button>
           <Details>
@@ -18,6 +27,7 @@ export default function Home() {
             <br /> able to use this app
           </Details>
         </WalletConnect>
+        </div>
       )}
     </Wrapper>
   )
@@ -44,7 +54,7 @@ const Button = styled.button`
   font-size: 1.3rem;
   font-weight: 500;
   border-radius: 0.5rem;
-  background-color: #3773f5;
+  background-color: #F6AF48;
   color: black;
 
   &:hover {
@@ -58,4 +68,20 @@ const Details = styled.div`
   margin-top: 1rem;
   font-weight: 500;
   color: #282b2f;
+`
+const LogoContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`
+const Logo = styled.div`
+    width: 65%;
+    object-fit: contain;
+    margin-left: 1rem;
+`
+const Headline = styled.div`
+  color: #F6AF48;
+  font-size: 1.5rem;
+  font-weight: 500;
 `
