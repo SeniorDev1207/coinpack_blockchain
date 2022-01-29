@@ -7,7 +7,7 @@ const TransferModal = () => {
     const [action, setAction] = React.useState('send');
 
     const selectedStyle = {
-        color: '#3773f5',
+        color: '#F6AF48',
     }
     const unselectedStyle = {
         border: '1px solid #282b2f',

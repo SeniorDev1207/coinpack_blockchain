@@ -43,7 +43,7 @@ const FlexInputContainer = styled.div`
     & > span {
         font-size: 3rem;
         margin-bottom: 0.5rem;
-        color: #3773f5;
+        color: #F6AF48;
     } 
 `
 
@@ -58,7 +58,7 @@ const FlexInput = styled.input`
     max-width: 45%;
     marginn-right: 0.5rem;
     font-size: 2rem;
-    color: #3773f5;
+    color: #F6AF48;
 
     &::-webkit-outer-spin-button,
     ::-webkit-inner-spin-button{

@@ -24,7 +24,7 @@ const Promos = () => {
                     Learn how to trade crypto and earn up to 10000% per year!
               </Description>
               <Placeholder />
-              <Additional style={{color: '#3773f5'}}>
+              <Additional style={{color: '#F6AF48'}}>
                   Verify identity
               </Additional>
           </OfferCard>
